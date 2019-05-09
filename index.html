@@ -1,0 +1,99 @@
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f441c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    div.outer{
+      width: 100%;
+      height: 100%;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    div.inner {
+      text-align: center;
+      padding: 10px;
+    }
+    a {
+      font-size: 90%;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    var people = ["Amy", "Ben", "Zak", "Winnie"];
+    var colors = ["#86f442", "#f441c7", "#41f4f1", "#f4f141"];
+
+    var questions = [
+      "Given the choice of anyone in the world, whom would you want as a dinner guest?",
+      "Would you like to be famous? In what way?",
+      "Before making a telephone call, do you ever rehearse what you are going to say? Why?",
+      "What would constitute a “perfect” day for you?",
+      "When did you last sing to yourself? To someone else?",
+      "If you were able to live to the age of 90 and retain either the mind or body of a 30-year-old for the last 60 years of your life, which would you want?",
+      "Do you have a secret hunch about how you will die?",
+      "Name three things you and your partner appear to have in common.",
+      "For what in your life do you feel most grateful?",
+      "If you could change anything about the way you were raised, what would it be?",
+      "Take four minutes and tell your partner your life story in as much detail as possible.",
+      "If you could wake up tomorrow having gained any one quality or ability, what would it be?",
+      "If a crystal ball could tell you the truth about yourself, your life, the future or anything else, what would you want to know?",
+      "Is there something that you’ve dreamed of doing for a long time? Why haven’t you done it?",
+      "What is the greatest accomplishment of your life?",
+      "What do you value most in a friendship?",
+      "What is your most treasured memory?",
+      "What is your most terrible memory?",
+      "If you knew that in one year you would die suddenly, would you change anything about the way you are now living? Why?",
+      "What does friendship mean to you?",
+      "What roles do love and affection play in your life?",
+      "Alternate sharing something you consider a positive characteristic of your partner. Share a total of five items.",
+      "How close and warm is your family? Do you feel your childhood was happier than most other people’s?",
+      "How do you feel about your relationship with your mother?",
+    ];
+
+    var currentIndex = 1;
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    };
+    function nextPerson() {
+      var index = currentIndex
+      while(index == currentIndex) {
+        index = getRandomInt(people.length);
+      }
+      currentIndex = index;
+      var name = people[index];
+      document.getElementById("display").innerHTML = name;
+      document.body.style.backgroundColor = colors[index];
+    };
+    function nextQuestion() {
+      var index = currentIndex
+      while(index == currentIndex) {
+        index = getRandomInt(questions.length);
+      }
+      currentIndex = index;
+      var name = questions[index];
+      document.getElementById("display").innerHTML = name;
+      document.body.style.backgroundColor = colors[index % 4];
+    };
+  </script>
+</head>
+<body id="body">
+<div class="outer">
+  <div class="inner">
+  <h1 id="display">
+    Benedict
+  </h1>
+  </div>
+  <div class="inner">
+    <a onclick="nextPerson()">person</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a onclick="nextQuestion()">question</a>
+  </div>
+</div>
+</body>
+</html>
